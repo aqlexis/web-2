@@ -1,0 +1,98 @@
+{
+  "producto_1": {
+    "nombre": "Smartphone XYZ",
+    "descripcion": "Teléfono inteligente de última generación con cámara de alta resolución y procesador rápido.",
+    "precio": 599.99,
+    "categoria": "Electrónica",
+    "stock": 15,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/5217/5217391.png"
+  },
+  "producto_2": {
+    "nombre": "Laptop Pro",
+    "descripcion": "Laptop potente para profesionales con pantalla retina y SSD ultrarrápido.",
+    "precio": 1299.99,
+    "categoria": "Informática",
+    "stock": 8,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/689/689355.png"
+  },
+  "producto_3": {
+    "nombre": "Auriculares Wireless",
+    "descripcion": "Auriculares inalámbricos con cancelación de ruido y batería de larga duración.",
+    "precio": 149.99,
+    "categoria": "Audio",
+    "stock": 20,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/5906/5906180.png"
+  },
+  "producto_4": {
+    "nombre": "Smartwatch Fit",
+    "descripcion": "Reloj inteligente con monitor de actividad física y notificaciones.",
+    "precio": 179.99,
+    "categoria": "Wearables",
+    "stock": 12,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/6447/6447804.png"
+  },
+  "producto_5": {
+    "nombre": "Cámara DSLR",
+    "descripcion": "Cámara profesional con sensor de alta calidad y lentes intercambiables.",
+    "precio": 849.99,
+    "categoria": "Fotografía",
+    "stock": 6,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/1645/1645360.png"
+  },
+  "producto_6": {
+    "nombre": "Altavoz Bluetooth",
+    "descripcion": "Altavoz portátil con conectividad Bluetooth y sonido envolvente.",
+    "precio": 89.99,
+    "categoria": "Audio",
+    "stock": 18,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/5072/5072173.png"
+  },
+  "producto_7": {
+    "nombre": "Audífonos Bluetooth",
+    "descripcion": "Audífonos inalámbricos con cancelación de ruido y gran calidad de sonido.",
+    "precio": 129.99,
+    "categoria": "Audio",
+    "stock": 10,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/3659/3659784.png"
+  },
+  "producto_8": {
+    "nombre": "Tablet Pro",
+    "descripcion": "Tablet de alta gama con pantalla retina y procesador de última generación para productividad y entretenimiento.",
+    "precio": 449.99,
+    "categoria": "Informática",
+    "stock": 14,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/2875/2875404.png"
+  },
+  "producto_9": {
+    "nombre": "Drone Profesional",
+    "descripcion": "Drone con cámara 4K, estabilización avanzada y vuelo de hasta 25 minutos.",
+    "precio": 799.99,
+    "categoria": "Electrónica",
+    "stock": 7,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/4260/4260153.png"
+  },
+  "producto_10": {
+    "nombre": "Proyector HD",
+    "descripcion": "Proyector portátil con resolución HD, conexión inalámbrica y altavoces integrados.",
+    "precio": 299.99,
+    "categoria": "Electrónica",
+    "stock": 11,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/5028/5028783.png"
+  },
+  "producto_11": {
+    "nombre": "Reloj Deportivo",
+    "descripcion": "Reloj inteligente especializado en deportes con GPS, monitor de frecuencia cardíaca y resistencia al agua.",
+    "precio": 199.99,
+    "categoria": "Wearables",
+    "stock": 16,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/3031/3031161.png"
+  },
+  "producto_12": {
+    "nombre": "Consola de Videojuegos",
+    "descripcion": "Consola de última generación con gráficos 4K, almacenamiento de 1TB y compatibilidad con juegos online.",
+    "precio": 499.99,
+    "categoria": "Entretenimiento",
+    "stock": 9,
+    "imagen": "https://cdn-icons-png.flaticon.com/512/1839/1839528.png"
+  }
+}

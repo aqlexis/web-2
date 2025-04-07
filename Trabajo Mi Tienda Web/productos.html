@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda - Productos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navegación -->
+    <nav class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold">Mi Tienda</div>
+                <div class="space-x-6">
+                    <a href="index.html" class="hover:text-indigo-200 transition">Inicio</a>
+                    <a href="nosotros.html" class="hover:text-indigo-200 transition">Nosotros</a>
+                    <a href="productos.html" class="font-bold border-b-2 border-white">Productos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="bg-indigo-700 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Nuestros Productos</h1>
+            <p class="text-xl max-w-3xl mx-auto">Descubre nuestra variedad de productos de alta calidad.</p>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div class="mb-4 md:mb-0">
+                    <label for="categoria" class="mr-2 font-medium">Categoría:</label>
+                    <select id="categoria" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="todos">Todos</option>
+                        <!-- Las categorías se cargarán dinámicamente -->
+                    </select>
+                </div>
+                
+                <div class="flex items-center">
+                    <label for="ordenar" class="mr-2 font-medium">Ordenar por:</label>
+                    <select id="ordenar" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="nombre">Nombre</option>
+                        <option value="precio-asc">Precio: Menor a Mayor</option>
+                        <option value="precio-desc">Precio: Mayor a Menor</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galería de Productos -->
+    <div class="py-12">
+        <div class="container mx-auto px-4">
+            <!-- Spinner de carga -->
+            <div id="cargando" class="text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+                <p class="mt-4 text-gray-600">Cargando productos...</p>
+            </div>
+            
+            <!-- Contenedor de productos -->
+            <div id="productos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 hidden">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </div>
+            
+            <!-- Mensaje sin resultados -->
+            <div id="sin-resultados" class="text-center py-12 hidden">
+                <p class="text-gray-600 text-lg">No se encontraron productos que coincidan con los filtros seleccionados.</p>
+                <button id="cargar-datos" class="mt-4 bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Cargar datos de ejemplo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles del Producto -->
+    <div id="modal-producto" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-start p-4 border-b">
+                <h2 id="modal-titulo" class="text-2xl font-bold"></h2>
+                <button id="cerrar-modal" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">&times;</button>
+            </div>
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-6 md:mb-0 md:pr-6">
+                        <img id="modal-imagen" src="" alt="" class="w-full h-auto rounded-lg">
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Descripción</h3>
+                            <p id="modal-descripcion" class="text-gray-600"></p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Precio</h3>
+                            <p id="modal-precio" class="text-2xl text-indigo-600 font-bold"></p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Categoría</h3>
+                            <p id="modal-categoria" class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full"></p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Disponibilidad</h3>
+                            <p id="modal-disponibilidad" class="text-gray-600"></p>
+                        </div>
+                        <button id="modal-agregar" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Mi Tienda. Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/" class="hover:text-indigo-300 transition">Facebook</a>
+                    <a href="https://www.instagram.com/" class="hover:text-indigo-300 transition">Instagram</a>
+                    <a href="https://x.com/?lang=es" class="hover:text-indigo-300 transition">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script>
+        // Variables globales
+        let productos = [];
+        let categorias = new Set(['todos']);
+        
+        // Elementos DOM
+        const productosContainer = document.getElementById('productos-container');
+        const cargandoElement = document.getElementById('cargando');
+        const sinResultadosElement = document.getElementById('sin-resultados');
+        const categoriaSelect = document.getElementById('categoria');
+        const ordenarSelect = document.getElementById('ordenar');
+        const modalProducto = document.getElementById('modal-producto');
+        const cerrarModal = document.getElementById('cerrar-modal');
+        const cargarDatosBtn = document.getElementById('cargar-datos');
+        
+        // Cargar productos desde Firebase
+        async function cargarProductos() {
+            try {
+                cargandoElement.classList.remove('hidden');
+                productosContainer.classList.add('hidden');
+                sinResultadosElement.classList.add('hidden');
+                
+                // Obtener productos desde Firebase
+                productos = await obtenerProductos();
+                
+                // Si no hay productos, mostrar mensaje
+                if (!productos || productos.length === 0) {
+                    cargandoElement.classList.add('hidden');
+                    sinResultadosElement.classList.remove('hidden');
+                    return;
+                }
+                
+                // Extraer categorías únicas
+                categorias = new Set(['todos']);
+                productos.forEach(producto => {
+                    if (producto.categoria) {
+                        categorias.add(producto.categoria);
+                    }
+                });
+                
+                // Cargar categorías en el select
+                cargarCategorias();
+                
+                // Mostrar productos
+                filtrarYOrdenarProductos();
+                
+                // Ocultar spinner de carga
+                cargandoElement.classList.add('hidden');
+                productosContainer.classList.remove('hidden');
+            } catch (error) {
+                console.error("Error al cargar productos:", error);
+                cargandoElement.classList.add('hidden');
+                sinResultadosElement.classList.remove('hidden');
+            }
+        }
+        
+        // Cargar categorías en el select
+        function cargarCategorias() {
+            categoriaSelect.innerHTML = '<option value="todos">Todos</option>';
+            
+            Array.from(categorias).sort().forEach(categoria => {
+                if (categoria !== 'todos') {
+                    const option = document.createElement('option');
+                    option.value = categoria;
+                    option.textContent = categoria;
+                    categoriaSelect.appendChild(option);
+                }
+            });
+        }
+        
+        // Filtrar y ordenar productos
+        function filtrarYOrdenarProductos() {
+            const categoriaSeleccionada = categoriaSelect.value;
+            const ordenSeleccionado = ordenarSelect.value;
+            
+            // Filtrar por categoría
+            let productosFiltrados = [...productos];
+            if (categoriaSeleccionada !== 'todos') {
+                productosFiltrados = productosFiltrados.filter(producto => 
+                    producto.categoria === categoriaSeleccionada
+                );
+            }
+            
+            // Ordenar productos
+            switch (ordenSeleccionado) {
+                case 'nombre':
+                    productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                    break;
+                case 'precio-asc':
+                    productosFiltrados.sort((a, b) => a.precio - b.precio);
+                    break;
+                case 'precio-desc':
+                    productosFiltrados.sort((a, b) => b.precio - a.precio);
+                    break;
+            }
+            
+            // Mostrar productos
+            mostrarProductos(productosFiltrados);
+        }
+        
+        // Mostrar productos en la galería
+        function mostrarProductos(productos) {
+            productosContainer.innerHTML = '';
+            
+            if (productos.length === 0) {
+                productosContainer.classList.add('hidden');
+                sinResultadosElement.classList.remove('hidden');
+                return;
+            }
+            
+            sinResultadosElement.classList.add('hidden');
+            productosContainer.classList.remove('hidden');
+            
+            productos.forEach(producto => {
+                const productoHTML = `
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition transform hover:scale-105">
+                        <div class="h-56 overflow-hidden">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-semibold">${producto.nombre}</h3>
+                                <span class="text-indigo-600 font-bold">$${producto.precio.toFixed(2)}</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">${producto.descripcion.substring(0, 100)}${producto.descripcion.length > 100 ? '...' : ''}</p>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">${producto.categoria}</span>
+                                <button class="ver-detalle bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition" data-id="${producto.id}">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                productosContainer.innerHTML += productoHTML;
+            });
+            
+            // Agregar event listeners a los botones
+            document.querySelectorAll('.ver-detalle').forEach(boton => {
+                boton.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    const producto = productos.find(p => p.id === id);
+                    if (producto) {
+                        abrirModal(producto);
+                    }
+                });
+            });
+        }
+        
+        // Abrir modal con detalles del producto
+        function abrirModal(producto) {
+            document.getElementById('modal-titulo').textContent = producto.nombre;
+            document.getElementById('modal-descripcion').textContent = producto.descripcion;
+            document.getElementById('modal-precio').textContent = `$${producto.precio.toFixed(2)}`;
+            document.getElementById('modal-categoria').textContent = producto.categoria;
+            
+            const disponibilidad = producto.stock > 0 ? `En stock (${producto.stock} unidades)` : 'Agotado';
+            document.getElementById('modal-disponibilidad').textContent = disponibilidad;
+            
+            // Imagen del producto
+            const modalImagen = document.getElementById('modal-imagen');
+            modalImagen.src = producto.imagen;
+            modalImagen.alt = producto.nombre;
+            
+            // Botón de agregar al carrito
+            const agregarBtn = document.getElementById('modal-agregar');
+            if (producto.stock > 0) {
+                agregarBtn.disabled = false;
+                agregarBtn.classList.remove('bg-gray-400');
+                agregarBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+                agregarBtn.textContent = 'Agregar al carrito';
+            } else {
+                agregarBtn.disabled = true;
+                agregarBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+                agregarBtn.classList.add('bg-gray-400');
+                agregarBtn.textContent = 'Producto agotado';
+            }
+            
+            modalProducto.classList.remove('hidden');
+        }
+        
+        // Cerrar modal
+        function cerrarModalProducto() {
+            modalProducto.classList.add('hidden');
+        }
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', async () => {
+            await cargarProductos();
+            
+            // Si no hay productos, podemos intentar cargar datos iniciales
+            if (!productos || productos.length === 0) {
+                cargarDatosBtn.addEventListener('click', async () => {
+                    const resultado = await cargarDatosIniciales();
+                    if (resultado) {
+                        await cargarProductos();
+                    }
+                });
+            }
+        });
+        
+        categoriaSelect.addEventListener('change', filtrarYOrdenarProductos);
+        ordenarSelect.addEventListener('change', filtrarYOrdenarProductos);
+        cerrarModal.addEventListener('click', cerrarModalProducto);
+        
+        // Cerrar modal al hacer clic fuera de él
+        modalProducto.addEventListener('click', (e) => {
+            if (e.target === modalProducto) {
+                cerrarModalProducto();
+            }
+        });
+        
+        // Evento para el botón agregar al carrito
+        document.getElementById('modal-agregar').addEventListener('click', () => {
+            alert('Funcionalidad de carrito en desarrollo');
+            // Aquí puedes implementar la lógica del carrito si lo deseas
+        });
+    </script>
+</body>
+</html>

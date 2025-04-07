@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda - Inicio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navegación -->
+    <nav class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold">Mi Tienda</div>
+                <div class="space-x-6">
+                    <a href="index.html" class="font-bold border-b-2 border-white">Inicio</a>
+                    <a href="nosotros.html" class="hover:text-indigo-200 transition">Nosotros</a>
+                    <a href="productos.html" class="hover:text-indigo-200 transition">Productos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-indigo-700 text-white">
+        <div class="container mx-auto px-4 py-16">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl font-bold mb-4">Bienvenido a Mi Tienda</h1>
+                    <p class="text-xl mb-6">Descubre nuestra selección de productos de alta calidad diseñados para satisfacer tus necesidades.</p>
+                    <a href="productos.html" class="bg-white text-indigo-700 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-100 transition">Ver Productos</a>
+                </div>
+		<div class="w-full md:w-1/2 lg:w-1/3">
+  			<img src="https://cdn-icons-png.flaticon.com/512/925/925036.png" alt="Imagen de portada" class="w-full h-auto rounded-lg shadow-xl">
+		</div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Características -->
+    <div class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">¿Por qué elegirnos?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="text-indigo-600 text-4xl mb-4">🚚</div>
+                    <h3 class="text-xl font-semibold mb-2">Envío Rápido</h3>
+                    <p class="text-gray-600">Entrega garantizada en 24-48 horas a cualquier parte del país.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="text-indigo-600 text-4xl mb-4">⭐</div>
+                    <h3 class="text-xl font-semibold mb-2">Calidad Premium</h3>
+                    <p class="text-gray-600">Todos nuestros productos pasan por estrictos controles de calidad.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="text-indigo-600 text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-semibold mb-2">Precio Justo</h3>
+                    <p class="text-gray-600">La mejor relación calidad-precio del mercado, garantizado.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Productos Destacados -->
+    <div class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Productos Destacados</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="productos-destacados">
+                <!-- Los productos destacados se cargarán dinámicamente -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                    <div class="bg-gray-300 h-48 w-full"></div>
+                    <div class="p-4">
+                        <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+                        <div class="h-4 bg-gray-300 rounded w-full mb-4"></div>
+                        <div class="flex justify-between items-center">
+                            <div class="h-5 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-8 bg-gray-300 rounded w-1/4"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                    <div class="bg-gray-300 h-48 w-full"></div>
+                    <div class="p-4">
+                        <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+                        <div class="h-4 bg-gray-300 rounded w-full mb-4"></div>
+                        <div class="flex justify-between items-center">
+                            <div class="h-5 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-8 bg-gray-300 rounded w-1/4"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                    <div class="bg-gray-300 h-48 w-full"></div>
+                    <div class="p-4">
+                        <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+                        <div class="h-4 bg-gray-300 rounded w-full mb-4"></div>
+                        <div class="flex justify-between items-center">
+                            <div class="h-5 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-8 bg-gray-300 rounded w-1/4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="productos.html" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">Ver todos los productos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Mi Tienda. Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/" class="hover:text-indigo-300 transition">Facebook</a>
+                    <a href="https://www.instagram.com/" class="hover:text-indigo-300 transition">Instagram</a>
+                    <a href="https://x.com/?lang=es" class="hover:text-indigo-300 transition">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script>
+        // Función para mostrar productos destacados
+        async function mostrarProductosDestacados() {
+            try {
+                const todosProductos = await obtenerProductos();
+                
+                // Si no hay productos, no hacer nada
+                if (!todosProductos || todosProductos.length === 0) {
+                    console.log('No hay productos para mostrar');
+                    return;
+                }
+                
+                // Seleccionar 3 productos al azar (o menos si no hay suficientes)
+                const productosDestacados = todosProductos.sort(() => 0.5 - Math.random()).slice(0, 3);
+                
+                // Contenedor de productos destacados
+                const contenedor = document.getElementById('productos-destacados');
+                contenedor.innerHTML = '';
+                
+                // Mostrar cada producto destacado
+                productosDestacados.forEach(producto => {
+                    const productoHTML = `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition transform hover:scale-105">
+                            <div class="h-48 overflow-hidden">
+                                <img src="${producto.imagen}" alt="${producto.nombre}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-xl font-semibold mb-2">${producto.nombre}</h3>
+                                <p class="text-gray-600 mb-4">${producto.descripcion.substring(0, 80)}${producto.descripcion.length > 80 ? '...' : ''}</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-indigo-600 font-bold">$${producto.precio.toFixed(2)}</span>
+                                    <a href="productos.html" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    contenedor.innerHTML += productoHTML;
+                });
+                
+            } catch (error) {
+                console.error('Error al cargar productos destacados:', error);
+            }
+        }
+        
+        // Cargar productos destacados cuando se cargue la página
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Intentar cargar productos desde la base de datos
+            await mostrarProductosDestacados();
+            
+            // Si no hay productos, cargar datos iniciales y volver a intentar
+            const productos = await obtenerProductos();
+            if (!productos || productos.length === 0) {
+                await cargarDatosIniciales();
+                await mostrarProductosDestacados();
+            }
+        });
+    </script>
+</body>
+</html>
